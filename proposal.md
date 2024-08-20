@@ -1,14 +1,14 @@
 # [Project Name]
 
-Created by [team member], [team member], and [team member].
+Created by [Zhenni], [Adrian].
 
 ## 🚀 Mission statement
 
-Our application, [app name] is for [target audience]. It allows users to [what it does and why audience would use it]
+Our application, [War] is for [people of all ages]. It allows users to [play an easy-to-learn quick simple game that requires no special skills and is suitable for all ages.]
 
 ## API & React Router
 
-This application will use the [name of API] API. Below are the documentation and specific endpoints we intend to use and the front-end pages that will use them.
+This application will use the [DeckOfCards] API. Below are the documentation and specific endpoints we intend to use and the front-end pages that will use them.
 
 - Link to API documentation: [Link goes here]
 - API endpoint #1
