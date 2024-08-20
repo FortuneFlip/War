@@ -10,12 +10,12 @@ Our application, [War] is for [people of all ages]. It allows users to [play an 
 
 This application will use the [DeckOfCards] API. Below are the documentation and specific endpoints we intend to use and the front-end pages that will use them.
 
-- Link to API documentation: [Link goes here]
-- API endpoint #1
-  - Description of endpoint
-  - List of data values used by the endpoint
-- API endpoint #2
-  - Description of endpoint
+- Link to API documentation: [https://deckofcardsapi.com]
+- API endpoint #1: https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1
+  - The default shuffled one deck of cards (does not include joker)
+  - { "success": true, "deck_id": "3p40paa87x90", "shuffled": true,"remaining": 52 }
+- API endpoint #2: https://deckofcardsapi.com/api/deck/<<deck_id>>/pile/<<pile_name>>/add/?cards=AS,2S
+  - To create piles to draw, add, shuffle (will not work with multiple decks)
   - List of data values used by the endpoint
 - API endpoint #3
   - Description of endpoint
