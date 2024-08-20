@@ -1,4 +1,4 @@
-# [Project Name]
+# [War]
 
 Created by [Zhenni], [Adrian].
 
@@ -13,13 +13,16 @@ This application will use the [DeckOfCards] API. Below are the documentation and
 - Link to API documentation: [https://deckofcardsapi.com]
 - API endpoint #1: https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1
   - The default shuffled one deck of cards (does not include joker)
-  - { "success": true, "deck_id": "3p40paa87x90", "shuffled": true,"remaining": 52 }
-- API endpoint #2: https://deckofcardsapi.com/api/deck/<<deck_id>>/pile/<<pile_name>>/add/?cards=AS,2S
-  - To create piles to draw, add, shuffle (will not work with multiple decks)
-  - { "success": true, "deck_id": "3p40paa87x90", "remaining": 12, "piles": {"discard": {"remaining": 2}}}
-- API endpoint #3
-  - Description of endpoint
-  - List of data values used by the endpoint
+  - { "success": true, "deck_id": "3p40paa87x90", "shuffled": true, "remaining": 52 }
+- API endpoint #2: https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${count}
+  - To draw a card from the deck at random
+  - {"success":true,"deck_id":"3oqpyindbglu","cards":[{"code":"8H","image":"https://deckofcardsapi.com/static/img/8H.png","images":{"svg":"https://deckofcardsapi.com/static/img/8H.svg","png":"https://deckofcardsapi.com/static/img/8H.png"},"value":"8","suit":"HEARTS"},{"code":"QC","image":"https://deckofcardsapi.com/static/img/QC.png","images":{"svg":"https://deckofcardsapi.com/static/img/QC.svg","png":"https://deckofcardsapi.com/static/img/QC.png"},"value":"QUEEN","suit":"CLUBS"}],"remaining":50}
+- API endpoint #3: https://deckofcardsapi.com/api/deck/${deckId}/shuffle/
+  - This allows us to reshuffle the deck when we want a new game to be played
+  - {"success": true,
+    "deck_id": "3p40paa87x90",
+    "shuffled": true,
+    "remaining": 52}
 
 [If your API requires an API key, say so here.]
 
@@ -29,7 +32,7 @@ This application will use the [DeckOfCards] API. Below are the documentation and
   - For each artwork, I want the `id`, `title`, and `image_id`
 - https://api.artic.edu/api/v1/artworks/{id}
   - This will fetch a single artwork object
-  - I will use the `id`, `title`, `short_description`, `medium_display`, `place_of_origin` and `image_id`
+  - I will use the `id`, `title`, `short_description`, `medium_display`, `place_of_origin`, and `image_id`
 - https://api.artic.edu/api/v1/artworks/search?q={query}
   - This will fetch a list of artworks that relate to the search query
   - For each artwork, I will use the `id` and `title`
