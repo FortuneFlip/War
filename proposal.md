@@ -16,7 +16,7 @@ This application will use the [DeckOfCards] API. Below are the documentation and
   - { "success": true, "deck_id": "3p40paa87x90", "shuffled": true,"remaining": 52 }
 - API endpoint #2: https://deckofcardsapi.com/api/deck/<<deck_id>>/pile/<<pile_name>>/add/?cards=AS,2S
   - To create piles to draw, add, shuffle (will not work with multiple decks)
-  - List of data values used by the endpoint
+  - { "success": true, "deck_id": "3p40paa87x90", "remaining": 12, "piles": {"discard": {"remaining": 2}}}
 - API endpoint #3
   - Description of endpoint
   - List of data values used by the endpoint
