@@ -94,11 +94,17 @@ To ensure that we can complete all core features of the application in 1 week, w
 
 ## Wireframes of each page in your application
 
-Below, you can find wireframes for our project. Each wireframe shows a different page of our application as well as the key components of the application. Details such as specific text values or images are intentionally not included:
+<div align="center">
+    <p><strong>Wireframe home page</strong></p>
+    <img width="669" alt="Wireframe-home" src="https://github.com/user-attachments/assets/0c5d9fc0-4fd2-41b4-8ec6-c05c95901175">
+</div>
 
-[Wireframe home page]
-<img width="669" alt="Wireframe-home" src="https://github.com/user-attachments/assets/0c5d9fc0-4fd2-41b4-8ec6-c05c95901175">
-[Wireframe game page]
-<img width="671" alt="Wireframe-game" src="https://github.com/user-attachments/assets/51a97efb-e2f8-4cfb-b563-31623c869897">
-[Wireframe result page]
-<img width="669" alt="Wireframe-result" src="https://github.com/user-attachments/assets/adf78ac4-3218-416b-8c29-133fb8e770ca">
+<div align="center">
+    <p><strong>Wireframe game page</strong></p>
+    <img width="671" alt="Wireframe-game" src="https://github.com/user-attachments/assets/51a97efb-e2f8-4cfb-b563-31623c869897">
+</div>
+
+<div align="center">
+    <p><strong>Wireframe result page</strong></p>
+    <img width="669" alt="Wireframe-result" src="https://github.com/user-attachments/assets/adf78ac4-3218-416b-8c29-133fb8e770ca">
+</div>
