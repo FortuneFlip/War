@@ -41,9 +41,9 @@ This application will use the [DeckOfCards] API. Below are the documentation and
 
 The application will feature the following frontend routes and core features:
 
-* On the `/example` page, users can...
-* On the `/example` page, users can...
-* On the `/example` page, users can...
+* On the `/home` page, users can get a ready for gaming and understand the rules 
+* On the `/game` page, users can the simple card game based completely on luck
+* On the `/final` page, users can see which one is the luck one
 
 **Example:**
 - On the `/artworks` page, users can view a grid of all artwork
