@@ -26,17 +26,6 @@ This application will use the [DeckOfCards] API. Below are the documentation and
 
 [If your API requires an API key, say so here.]
 
-**Example:**
-- https://api.artic.edu/api/v1/artworks
-  - This will fetch an array of artwork objects
-  - For each artwork, I want the `id`, `title`, and `image_id`
-- https://api.artic.edu/api/v1/artworks/{id}
-  - This will fetch a single artwork object
-  - I will use the `id`, `title`, `short_description`, `medium_display`, `place_of_origin`, and `image_id`
-- https://api.artic.edu/api/v1/artworks/search?q={query}
-  - This will fetch a list of artworks that relate to the search query
-  - For each artwork, I will use the `id` and `title`
-
 ## 👩‍💻 MVP User Stories & Frontend Routes
 
 The application will feature the following frontend routes and core features:
@@ -45,12 +34,6 @@ The application will feature the following frontend routes and core features:
 * On the `/game` page, users can the simple card game based completely on luck
 * On the `/final` page, users can see which one is the luck one that won
 
-**Example:**
-- On the `/artworks` page, users can view a grid of all artwork
-- On the `/artworks` page, users can click on a piece of art in the grid, taking them to the details page for that piece of art.
-- On the `/artworks/:artworkId` page, users can view additional details for a single piece of art
-- On the `/` page, users can search for artwork titles related to a search term.
-
 ## 🤔 Stretch User Stories
 
 If time permits, the following stretch features will be implemented in order of priority:
@@ -58,10 +41,6 @@ If time permits, the following stretch features will be implemented in order of 
 * Users will be able to see animated images
 * Users will be able to test their memory because addition rules to make it not luck base
 * Users will be able to able to leave a simple rating
-
-**Example:**
-* Users will be able to save and view favorited artworks using local storage
-* Users will be able to change the color scheme of the website from light mode to dark mode
 
 ## 📆 Timeline for reaching MVP in 1 week
 
