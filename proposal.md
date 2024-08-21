@@ -41,9 +41,9 @@ This application will use the [DeckOfCards] API. Below are the documentation and
 
 The application will feature the following frontend routes and core features:
 
-* On the `/home` page, users can get a ready for gaming and understand the rules 
+* On the `/home` page, users can get ready for gaming and understand the rules 
 * On the `/game` page, users can the simple card game based completely on luck
-* On the `/final` page, users can see which one is the luck one
+* On the `/final` page, users can see which one is the luck one that won
 
 **Example:**
 - On the `/artworks` page, users can view a grid of all artwork
@@ -55,9 +55,9 @@ The application will feature the following frontend routes and core features:
 
 If time permits, the following stretch features will be implemented in order of priority:
 
-* Users will be able to...
-* Users will be able to...
-* Users will be able to...
+* Users will be able to see animated images
+* Users will be able to test their memory because addition rules to make it not luck base
+* Users will be able to able to leave a simple rating
 
 **Example:**
 * Users will be able to save and view favorited artworks using local storage
@@ -68,9 +68,9 @@ If time permits, the following stretch features will be implemented in order of 
 To ensure that we can complete all core features of the application in 1 week, we will aim to complete tasks according to the following timeline:
 
 **Day 1**
-- [ ] Ticket description and due date
-- [ ] Ticket description and due date
-- [ ] Ticket description and due date
+- [ ] Project repo set up by 8/20
+- [ ] Proposal set up by 8/20
+- [ ] Scrum Board set up by 8/20
 
 **Day 2**
 - [ ] Ticket description and due date
