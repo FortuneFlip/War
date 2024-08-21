@@ -73,24 +73,24 @@ To ensure that we can complete all core features of the application in 1 week, w
 - [ ] Scrum Board set up by 8/20
 
 **Day 2**
-- [ ] Ticket description and due date
-- [ ] Ticket description and due date
-- [ ] Ticket description and due date
+- [ ] Data needed will be acessible (+images) by 8/21
+- [ ] Basic html needs to be set by 8/21
+- [ ] Dymnically using data as needed by 8/21
 
 **Day 3** (MVP due by the end of the day)
-- [ ] Ticket description and due date
-- [ ] Ticket description and due date
-- [ ] Ticket description and due date
+- [ ] Able to traverse through different pages smoothly by 8/22
+- [ ] General layout structure correctly by 8/22
+- [ ] Improve visuals and test if everything runs as intended by 8/22
 
 **Day 4**
-- [ ] Ticket description and due date
-- [ ] Ticket description and due date
-- [ ] Ticket description and due date
+- [ ] Incorporate animated image if possible by 8/23
+- [ ] Incorporate and adjust for addition rules if possible by 8/23
+- [ ] Incorporate a simple rating system if possible by 8/23
 
 **Day 5**
-- [ ] Ticket description and due date
-- [ ] Ticket description and due date
-- [ ] Ticket description and due date
+- [ ] Create and prepare for presentation by 8/24
+- [ ] Create and prepare for website walkthrough by 8/24
+- [ ] Reflect on Agile methodologies and if possible deploy by 8/24
 
 ## Wireframes of each page in your application
 
