@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import GameContext from './GameContext';
 
 // Create the provider component
 const GameProvider = ({ children }) => {

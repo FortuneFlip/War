@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { GameContext } from '../components/GameContext';
+import GameContext from '../components/GameContext';
 
 function Game() {
   const {
@@ -16,10 +16,13 @@ function Game() {
       .then(data => {
         setDeckId(data.deck_id);
         setRemaining(data.remaining);
-      });
+      })
+      .catch(error => console.error('Error fetching deck:', error));
   }, [setDeckId, setRemaining]);
 
   const drawCards = () => {
+    if (!deckId) return; // Check if deckId is available
+
     fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
       .then(response => response.json())
       .then(data => {
@@ -27,7 +30,8 @@ function Game() {
         setComputerCard(data.cards[1]);
         setRemaining(data.remaining);
         determineWinner(data.cards[0], data.cards[1]);
-      });
+      })
+      .catch(error => console.error('Error drawing cards:', error));
   };
 
   const determineWinner = (playerCard, computerCard) => {
@@ -49,6 +53,8 @@ function Game() {
   };
 
   const reshuffleDeck = () => {
+    if (!deckId) return; // Check if deckId is available
+
     fetch(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/`)
       .then(response => response.json())
       .then(data => {
@@ -56,7 +62,8 @@ function Game() {
         setPlayerCard(null);
         setComputerCard(null);
         setResult("");
-      });
+      })
+      .catch(error => console.error('Error reshuffling deck:', error));
   };
 
   return (
