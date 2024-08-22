@@ -11,27 +11,33 @@ function Game() {
   } = useContext(GameContext);
 
   useEffect(() => {
-    fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
-      .then(response => response.json())
-      .then(data => {
+    const fetchDeck = async () => {
+      try {
+        const response = await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1');
+        const data = await response.json();
         setDeckId(data.deck_id);
         setRemaining(data.remaining);
-      })
-      .catch(error => console.error('Error fetching deck:', error));
+      } catch (error) {
+        console.error('Error fetching deck:', error);
+      }
+    };
+
+    fetchDeck();
   }, [setDeckId, setRemaining]);
 
-  const drawCards = () => {
+  const drawCards = async () => {
     if (!deckId) return; // Check if deckId is available
 
-    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
-      .then(response => response.json())
-      .then(data => {
-        setPlayerCard(data.cards[0]);
-        setComputerCard(data.cards[1]);
-        setRemaining(data.remaining);
-        determineWinner(data.cards[0], data.cards[1]);
-      })
-      .catch(error => console.error('Error drawing cards:', error));
+    try {
+      const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`);
+      const data = await response.json();
+      setPlayerCard(data.cards[0]);
+      setComputerCard(data.cards[1]);
+      setRemaining(data.remaining);
+      determineWinner(data.cards[0], data.cards[1]);
+    } catch (error) {
+      console.error('Error drawing cards:', error);
+    }
   };
 
   const determineWinner = (playerCard, computerCard) => {
@@ -52,18 +58,19 @@ function Game() {
     }
   };
 
-  const reshuffleDeck = () => {
+  const reshuffleDeck = async () => {
     if (!deckId) return; // Check if deckId is available
 
-    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/`)
-      .then(response => response.json())
-      .then(data => {
-        setRemaining(data.remaining);
-        setPlayerCard(null);
-        setComputerCard(null);
-        setResult("");
-      })
-      .catch(error => console.error('Error reshuffling deck:', error));
+    try {
+      const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/`);
+      const data = await response.json();
+      setRemaining(data.remaining);
+      setPlayerCard(null);
+      setComputerCard(null);
+      setResult("");
+    } catch (error) {
+      console.error('Error reshuffling deck:', error);
+    }
   };
 
   return (
