@@ -17,32 +17,38 @@ function Game() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
-      .then(response => response.json())
-      .then(data => {
+    const fetchDeck = async () => {
+      try {
+        const response = await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1');
+        const data = await response.json();
         setDeckId(data.deck_id);
         setRemaining(data.remaining);
-      })
-      .catch(error => console.error('Error fetching deck:', error));
+      } catch (error) {
+        console.error('Error fetching deck:', error);
+      }
+    };
+
+    fetchDeck();
   }, [setDeckId, setRemaining]);
 
-  const drawCards = () => {
+  const drawCards = async () => {
     if (!deckId) return;
 
-    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
-      .then(response => response.json())
-      .then(data => {
-        setPlayerCard(data.cards[0]);
-        setComputerCard(data.cards[1]);
-        setRemaining(data.remaining);
-        determineWinner(data.cards[0], data.cards[1]);
+    try {
+      const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`);
+      const data = await response.json();
+      setPlayerCard(data.cards[0]);
+      setComputerCard(data.cards[1]);
+      setRemaining(data.remaining);
+      determineWinner(data.cards[0], data.cards[1]);
 
-        // Check if the deck is empty
-        if (data.remaining === 0) {
-          navigate('/result'); // Navigate to the result page
-        }
-      })
-      .catch(error => console.error('Error drawing cards:', error));
+      // Check if the deck is empty
+      if (data.remaining === 0) {
+        navigate('/result'); // Navigate to the result page
+      }
+    } catch (error) {
+      console.error('Error drawing cards:', error);
+    }
   };
 
   const determineWinner = (playerCard, computerCard) => {
@@ -99,3 +105,4 @@ function Game() {
 }
 
 export default Game;
+
