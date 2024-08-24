@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import GameContext from '../components/GameContext';
 
 function Game() {
@@ -8,7 +9,12 @@ function Game() {
     computerCard, setComputerCard,
     result, setResult,
     remaining, setRemaining,
+    playerWins, setPlayerWins,
+    computerWins, setComputerWins,
   } = useContext(GameContext);
+
+  const [round, setRound] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDeck = async () => {
@@ -26,7 +32,7 @@ function Game() {
   }, [setDeckId, setRemaining]);
 
   const drawCards = async () => {
-    if (!deckId) return; // Check if deckId is available
+    if (!deckId) return;
 
     try {
       const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`);
@@ -35,6 +41,11 @@ function Game() {
       setComputerCard(data.cards[1]);
       setRemaining(data.remaining);
       determineWinner(data.cards[0], data.cards[1]);
+
+      // Check if the deck is empty
+      if (data.remaining === 0) {
+        navigate('/result'); // Navigate to the result page
+      }
     } catch (error) {
       console.error('Error drawing cards:', error);
     }
@@ -51,31 +62,24 @@ function Game() {
 
     if (playerValue > computerValue) {
       setResult("Player Wins!");
+      setPlayerWins(prevWins => prevWins + 1);
     } else if (computerValue > playerValue) {
       setResult("Computer Wins!");
+      setComputerWins(prevWins => prevWins + 1);
     } else {
       setResult("It's a Tie!");
     }
-  };
 
-  const reshuffleDeck = async () => {
-    if (!deckId) return; // Check if deckId is available
-
-    try {
-      const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/`);
-      const data = await response.json();
-      setRemaining(data.remaining);
-      setPlayerCard(null);
-      setComputerCard(null);
-      setResult("");
-    } catch (error) {
-      console.error('Error reshuffling deck:', error);
-    }
+    setRound(prevRound => prevRound + 1);
   };
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h1>War Card Game</h1>
+      <div style={{ marginBottom: "20px" }}>
+        <h2>Round: {round}</h2>
+        <p>Player Wins: {playerWins} | Computer Wins: {computerWins}</p>
+      </div>
       {remaining > 0 ? (
         <>
           <button onClick={drawCards} disabled={!deckId}>Draw Cards</button>
@@ -93,8 +97,7 @@ function Game() {
         </>
       ) : (
         <div>
-          <h2>No more cards! Reshuffle the deck?</h2>
-          <button onClick={reshuffleDeck}>Reshuffle Deck</button>
+          <h2>No more cards! Navigating to results...</h2>
         </div>
       )}
     </div>
@@ -102,3 +105,5 @@ function Game() {
 }
 
 export default Game;
+
+
