@@ -1,0 +1,282 @@
+body {
+  font-family: 'Press Start 2P', cursive; /* Apply to all text except specified */
+}
+
+/* Container styling */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
+  color: white; /* Make all text white */
+}
+
+/* Button Rules Styling */
+.button-rules {
+  position: absolute; /* Position button absolutely within the container */
+  top: 40px; /* Space from the top edge */
+  right: 30px; /* Space from the right edge */
+  background-color: #ffffff; /* White background color for the button */
+  color: #333; /* Dark text color for contrast */
+  padding: 10px 20px; /* Add padding for button size */
+  border: 2px solid #ffffff; /* White border */
+  border-radius: 10px; /* Rounded corners for a button look */
+  text-transform: uppercase;
+  font-size: 1em; /* Adjust font size if needed */
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.5), 0px 0px 15px 0px rgba(255, 255, 255, 0.3); /* Glowing effect */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: "Bungee Shade", sans-serif; /* Example fallback font */
+}
+
+.button-rules:hover {
+  background-color: #f0f0f0; /* Slightly darker white for hover effect */
+  box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.8), 0px 0px 25px 0px rgba(255, 255, 255, 0.5); /* Enhanced glowing effect on hover */
+}
+
+/* Add active state for click effect */
+.button-rules:active {
+  background-color: #e0e0e0; /* Darker background on click */
+  box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.4), 0px 0px 10px 0px rgba(255, 255, 255, 0.2); /* Reduced glowing effect on click */
+}
+
+
+
+/* Glowing Button Styling */
+.button-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+  font-family: "Bungee Shade", sans-serif; /* Example fallback font */
+}
+
+.button {
+  z-index: 500; /* Ensure button is on top */
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  appearance: none;
+  display: inline-block;
+  cursor: pointer;
+  background-color: #fdfca9;
+  color: black;
+  padding: 8px 32px; /* Reduced padding for a smaller button */
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-size: 1.2em; /* Reduced font size */
+  box-shadow: 0px 0px 8px 0px #fdfca9 inset, 0px 0px 24px 0px #ffeb3b, 0px 0px 8px 0px #ffffff42;
+  transition: background-color 0.3s ease;
+}
+
+.button::before,
+.button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  border-radius: 999px;
+  transition: opacity 0.3s;
+}
+
+.button::before {
+  box-shadow: 0px 0px 24px 0px #ffeb3b;
+  opacity: 0;
+}
+
+.button::after {
+  box-shadow: 0px 0px 23px 0px #fdfca9 inset, 0px 0px 8px 0px #ffffff42;
+  opacity: 0;
+}
+
+.button-wrapper:hover .button::before,
+.button-wrapper:hover .button::after {
+  opacity: 1;
+}
+
+/* Firefly Dots */
+.dot {
+  display: block;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: yellow;
+  border-radius: 50%;
+  box-shadow: 0px 0px 6px 0px #ffeb3b, 0px 0px 4px 0px #fdfca9 inset, 0px 0px 2px 1px #ffffff42;
+  z-index: 100; /* Ensure dots are beneath the button */
+  opacity: 0.9;
+  transition: transform 0.3s ease;
+  animation: hoverFirefly 5s infinite ease-in-out;
+}
+
+.dot-1 {
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dot-2 {
+  top: 10%;
+  left: 10%;
+}
+
+.dot-3 {
+  top: 10%;
+  right: 10%;
+}
+
+.dot-4 {
+  bottom: 10%;
+  left: 10%;
+}
+
+.dot-5 {
+  bottom: 10%;
+  right: 10%;
+}
+
+.dot-6 {
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dot-7 {
+  top: 50%;
+  left: -10%;
+  transform: translateY(-50%);
+}
+
+.dot-8 {
+  top: 50%;
+  right: -10%;
+  transform: translateY(-50%);
+}
+
+/* Firefly Animation */
+@keyframes hoverFirefly {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-10px, -10px);
+  }
+  50% {
+    transform: translate(10px, 10px);
+  }
+  75% {
+    transform: translate(-10px, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes dimFirefly {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Modal Content Styling */
+.modal-content {
+  position: absolute; /* Ensure it's positioned absolutely */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for exact center */
+  background-color: #fff; /* White background for modal content */
+  color: #000; /* Black text color */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Padding inside modal */
+  max-width: 600px; /* Max width for the modal */
+  width: 90%; /* Responsive width */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); /* Shadow for visibility */
+  outline: none; /* Remove default outline */
+  z-index: 1000; /* Ensure it's on top */
+  text-align: center; /* Ensure text is aligned to the left */
+  font-family: "Jaro", sans-serif; /* Example fallback font */
+}
+
+/* Overlay Styling */
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.75); /* Semi-transparent overlay */
+  z-index: 999; /* Ensure it's beneath the modal but above other content */
+}
+
+/* List Styling */
+ul, ol {
+  padding-left: 20px; /* Space for bullet points or numbers */
+  margin: 0; /* Remove default margin */
+}
+
+/* List Items Styling */
+li {
+  list-style-position: inside; /* Place bullet points inside the list */
+  margin-bottom: 10px; /* Space between list items */
+}
+
+/* Optional: Customize List Item Bullet Points */
+li::marker {
+  color: #000; /* Bullet point color */
+  font-size: 1em; /* Adjust bullet point size if needed */
+}
+
+/* Button Close Styling */
+.close-button {
+  display: block; /* Make the button a block element to center it */
+  margin: 20px auto 0; /* Center horizontally and add top margin */
+  background-color: #000000; /* Background color for the button */
+  color: #e9e7e7; /* Text color for contrast */
+  padding: 8px 16px; /* Reduced padding for a smaller button */
+  border: 2px solid #000000; /* Border color */
+  border-radius: 8px; /* Slightly smaller border radius */
+  text-transform: uppercase;
+  font-size: 0.9em; /* Slightly smaller font size */
+  cursor: pointer;
+  box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.5), 0px 0px 10px 0px rgba(255, 255, 255, 0.3); /* Adjusted glowing effect */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: "Bungee Shade", sans-serif; /* Font style */
+}
+
+.close-button:hover {
+  background-color: #f4f4f4; /* Slightly lighter color for hover effect */
+  color: #121212; /* Text color for contrast */
+  box-shadow: 0px 0px 12px 0px rgba(255, 255, 255, 0.8), 0px 0px 15px 0px rgba(255, 255, 255, 0.5); /* Enhanced glowing effect on hover */
+}
+
+
+select {
+  font-family: 'Press Start 2P', cursive; /* Apply font to the select dropdown */
+  font-size: 1em; /* Adjust font size */
+  color: #000; /* Text color */
+  background-color: #fff; /* Background color */
+  font-family: "Jaro", sans-serif; /* Example fallback font */
+}
+
+option {
+  font-family: 'Press Start 2P', cursive; /* Apply font to option text */
+  font-size: 1em; /* Adjust font size */
+  color: #000; /* Text color */
+  background-color: #fff; /* Background color */
+  font-family: "Jaro", sans-serif; /* Example fallback font */
+  text-align: center;
+}
