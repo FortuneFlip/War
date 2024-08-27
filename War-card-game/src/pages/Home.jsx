@@ -2,13 +2,14 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import GameContext from '../components/GameContext';
+import './Home.css'; // Import the CSS file
 
-Modal.setAppElement('#root'); // Set the app element for accessibility
+Modal.setAppElement('#root');
 
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { setDifficulty, setPlayerWins, setComputerWins} = useContext(GameContext); // Correct usage of useContext
-  const [difficulty, setDifficultyState] = useState('Luck'); // Set 'Luck' as default
+  const { setDifficulty, setPlayerWins, setComputerWins } = useContext(GameContext);
+  const [difficulty, setDifficultyState] = useState('Luck');
   const navigate = useNavigate();
 
   const openModal = () => {
@@ -20,25 +21,32 @@ function Home() {
   };
 
   const startGame = () => {
-    // Set the difficulty in the GameContext
     setDifficulty(difficulty);
-    setPlayerWins(0); // Reset player wins to 0
-    setComputerWins(0); // Reset computer wins to 0
-    console.log({difficulty})
+    setPlayerWins(0);
+    setComputerWins(0);
     navigate('/game');
   };
 
   const handleDifficultyChange = (event) => {
-    setDifficultyState(event.target.value); // Update local state
+    setDifficultyState(event.target.value);
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+    <div className="home-container">
       <h1>Welcome to the War Card Game</h1>
       <h2>Wanna try your luck?</h2>
       <h3>Or would you like to test your memory?</h3>
-      <button onClick={startGame}>Start the Game</button>
-      <button onClick={openModal}>Rules</button>
+      <div className="button-wrapper" onClick={startGame}>
+        <span className="dot dot-1"></span>
+        <span className="dot dot-2"></span>
+        <span className="dot dot-3"></span>
+        <span className="dot dot-4"></span>
+        <span className="dot dot-5"></span>
+        <span className="dot dot-6"></span>
+        <span className="dot dot-7"></span>
+        <span className="button">Start the Game</span>
+      </div>
+      <button className="button-rules" onClick={openModal}>Rules</button>
       <div style={{ marginTop: '20px' }}>
         <label htmlFor="difficulty">Select Difficulty: </label>
         <select id="difficulty" value={difficulty} onChange={handleDifficultyChange}>
@@ -53,6 +61,7 @@ function Home() {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Game Rules"
+        className="modal-content"
       >
         <h2>Rules of War Card Game</h2>
         <p>In "Luck" gameplay mode:</p>
@@ -71,12 +80,11 @@ function Home() {
           <li>Hard: Stats are hidden from the start.</li>
           <li>You have to choose whether the player won or the computer won.</li>
         </ul>
-        <button onClick={closeModal}>Close</button>
+        <button onClick={closeModal}  className="close-button">Close</button>
       </Modal>
     </div>
   );
 }
 
 export default Home;
-
 
