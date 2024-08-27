@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GameContext from '../components/GameContext';
+import Modal from 'react-modal'; // Ensure Modal is imported correctly
+
+// Ensure that you set the app element for accessibility
+Modal.setAppElement('#root');
 
 function Game() {
   const {
@@ -8,12 +12,17 @@ function Game() {
     playerCard, setPlayerCard,
     computerCard, setComputerCard,
     result, setResult,
+    finalRes, setFinalRes,
     remaining, setRemaining,
     playerWins, setPlayerWins,
     computerWins, setComputerWins,
+    difficulty, // Retrieve the difficulty from the context
+    setDecision
   } = useContext(GameContext);
 
   const [round, setRound] = useState(1);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [hideStats, setHideStats] = useState(false); // State to manage hiding stats in "Memory" mode
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,6 +40,28 @@ function Game() {
     fetchDeck();
   }, [setDeckId, setRemaining]);
 
+  useEffect(() => {
+    // Logic to hide stats based on difficulty in "Memory" mode
+    if (difficulty === 'Hard') {
+      setHideStats(true);
+    } else if (difficulty === 'Medium' && round > 13) {
+      setHideStats(true);
+    } else if (difficulty === 'Easy' && round > 18) {
+      setHideStats(true);
+    }
+  }, [round, difficulty]);
+
+  useEffect(() => {
+    // Determine the final result based on player and computer wins
+    if (playerWins > computerWins) {
+      setFinalRes("Player Wins!");
+    } else if (computerWins > playerWins) {
+      setFinalRes("Computer Wins!");
+    } else {
+      setFinalRes("It's a Tie!");
+    }
+  }, [playerWins, computerWins]);
+
   const drawCards = async () => {
     if (!deckId) return;
 
@@ -44,7 +75,11 @@ function Game() {
 
       // Check if the deck is empty
       if (data.remaining === 0) {
-        navigate('/result'); // Navigate to the result page
+        if (difficulty !== 'Luck') {
+          setModalIsOpen(true);
+        } else {
+          navigate('/result'); // Navigate to the result page
+        }
       }
     } catch (error) {
       console.error('Error drawing cards:', error);
@@ -73,12 +108,33 @@ function Game() {
     setRound(prevRound => prevRound + 1);
   };
 
+  const closeModal = () => {
+    setModalIsOpen(false);
+    navigate('/result');
+  };
+
+  const handlePlayerChoice = (choice) => {
+    // Compare the player's choice with the actual result
+    if (choice === 'player' && finalRes === 'Player Wins!') {
+      setDecision("right, player won!");
+    } else if (choice === 'computer' && finalRes === 'Computer Wins!') {
+      setDecision("right, computer won!");
+    } else if (choice === 'tie' && finalRes === "It's a Tie!") {
+      setDecision("right, both player and computer tied!");
+    } else {
+      setDecision(`wrong. ${finalRes}`)
+    }
+    closeModal();
+  };
+
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h1>War Card Game</h1>
       <div style={{ marginBottom: "20px" }}>
         <h2>Round: {round}</h2>
-        <p>Player Wins: {playerWins} | Computer Wins: {computerWins}</p>
+        {!hideStats && (
+          <p>Player Wins: {playerWins} | Computer Wins: {computerWins}</p>
+        )}
       </div>
       {remaining > 0 ? (
         <>
@@ -100,10 +156,22 @@ function Game() {
           <h2>No more cards! Navigating to results...</h2>
         </div>
       )}
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Who Won?"
+      >
+        <h2>Who won the game?</h2>
+        <button onClick={() => handlePlayerChoice('player')}>Player</button>
+        <button onClick={() => handlePlayerChoice('computer')}>Computer</button>
+        <button onClick={() => handlePlayerChoice('tie')}>Tie</button>
+      </Modal>
     </div>
   );
 }
 
 export default Game;
+
 
 
