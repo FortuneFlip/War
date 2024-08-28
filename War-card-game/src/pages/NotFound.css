@@ -1,0 +1,37 @@
+/* Overall container styling */
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  min-height: 100vh; /* Full viewport height */
+  text-align: center;
+  margin: 0; /* Remove default margin */
+  box-sizing: border-box;
+  background-color: black;
+  color: white; /* Make all text white */
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.5em 0; /* Adjust spacing as needed */
+}
+
+p {
+  font-size: 1.2em;
+}
+
+a {
+  color: #FFD700; /* Firefly yellow color */
+  /* text-decoration: none; Remove underline */
+  font-weight: bold; /* Make link bold */
+  transition: text-shadow 0.3s ease; /* Smooth transition for shadow effect */
+}
+
+/* Glow effect on hover */
+a:hover {
+  text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700, 0 0 20px #FFEA00, 0 0 30px #FFEA00, 0 0 40px #FFEA00, 0 0 50px #FFEA00;
+  color: #FFEA00; /* Change text color to a brighter yellow */
+  text-decoration: underline; /* Add underline on hover */
+}
+
