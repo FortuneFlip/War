@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GameContext from '../components/GameContext';
 import Modal from 'react-modal'; // Ensure Modal is imported correctly
+import './Game.css'
 
 // Ensure that you set the app element for accessibility
 Modal.setAppElement('#root');
@@ -147,9 +148,9 @@ function Game() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div className="game-container" style={{ textAlign: "center", marginTop: "50px" }}>
       <h1>War Card Game</h1>
-      <div style={{ marginBottom: "20px" }}>
+      <div className="round-stats" style={{ marginBottom: "20px" }}>
         <h2>Round: {round}</h2>
         {!hideStats && (
           <p>Player Wins: {playerWins} | Computer Wins: {computerWins}</p>
@@ -157,17 +158,17 @@ function Game() {
       </div>
       {remaining > 0 ? (
         <>
-          <button onClick={drawCards} disabled={!deckId}>Draw Cards</button>
-          {!reshuffleClicked && ( // Render button only if it hasn't been clicked
-            <button onClick={reshuffleDeck} disabled={!deckId}>Reshuffle Deck</button>
+          <button className="draw-button" onClick={drawCards} disabled={!deckId}>Draw Cards</button>
+          {!reshuffleClicked && (
+            <button className="reshuffle-button" onClick={reshuffleDeck} disabled={!deckId}>Reshuffle Deck</button>
           )}
-          <div style={{ marginTop: "20px" }}>
+          <div className="cards-container" style={{ marginTop: "20px" }}>
             {playerCard && (
-              <img src={playerCard.image} alt={playerCard.value} />
+              <img src={playerCard.image} alt={playerCard.value} className="card-image" />
             )}
-            <span style={{ margin: "0 20px" }}>vs</span>
+            <span className="vs-text" style={{ margin: "0 20px" }}>vs</span>
             {computerCard && (
-              <img src={computerCard.image} alt={computerCard.value} />
+              <img src={computerCard.image} alt={computerCard.value} className="card-image" />
             )}
           </div>
           <h2>{result}</h2>
@@ -183,19 +184,17 @@ function Game() {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Who Won?"
+        className="modal-content"
+        shouldCloseOnOverlayClick={false}
+        shouldCloseOnEsc={false}
       >
         <h2>Who won the game?</h2>
-        <button onClick={() => handlePlayerChoice('player')}>Player</button>
-        <button onClick={() => handlePlayerChoice('computer')}>Computer</button>
-        <button onClick={() => handlePlayerChoice('tie')}>Tie</button>
+        <button className="choice-button" onClick={() => handlePlayerChoice('player')}>Player</button>
+        <button className="choice-button" onClick={() => handlePlayerChoice('computer')}>Computer</button>
+        <button className="choice-button" onClick={() => handlePlayerChoice('tie')}>Tie</button>
       </Modal>
     </div>
   );
 }
 
 export default Game;
-
-
-
-
-

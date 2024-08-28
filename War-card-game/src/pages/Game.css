@@ -1,0 +1,125 @@
+
+body {
+    background-color: #000000; /* Black background */
+    color: #ffffff; /* White text for better contrast */
+    margin: 0;
+    padding: 0;
+}
+
+.game-container {
+    color: #ffffff; /* Ensure the text within the game container is also white */
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  /* Round Number Styling */
+  .game-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  /* Player vs Computer Cards Container */
+  .cards-container {
+    margin-top: 20px;
+  }
+  
+  /* Card Images */
+  .cards-container img {
+    width: 200px;
+    height: auto;
+    margin: 0 20px;
+  }
+  
+  /* Result Message Styling
+  .result-message {
+    margin-top: 20px;
+    font-size: 1.5em;
+  } */
+  
+  /* Button Styling */
+  button {
+    background-color: #fdfca9; /* Yellow background */
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0px 0px 8px 0px #fdfca9 inset, 0px 0px 24px 0px #ffeb3b, 0px 0px 8px 0px #ffffff42;
+    transition: background-color 0.3s ease;
+    font-family: "Bungee Shade", sans-serif; /* Ensure consistent font style */
+    margin: 10px; /* Add spacing between buttons */
+  }
+  
+  /* Button Hover Effect */
+  button:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0px 0px 12px 0px rgba(255, 255, 255, 0.8), 0px 0px 15px 0px rgba(255, 255, 255, 0.5);
+  }
+.draw-button {
+
+}
+  
+  /* Modal Styling */
+  .ReactModal__Overlay {
+    background-color: rgba(0, 0, 0, 0.75); /* Dark overlay */
+    z-index: 999;
+  }
+  
+  .ReactModal__Content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    outline: none;
+    z-index: 1000;
+    text-align: center;
+    font-family: "Jaro", sans-serif;
+  }
+  
+  /* Button inside Modal */
+  .ReactModal__Content button {
+    background-color: #000;
+    color: #e9e7e7;
+    padding: 8px 16px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    cursor: pointer;
+    box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.5), 0px 0px 10px 0px rgba(255, 255, 255, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: "Bungee Shade", sans-serif;
+    margin-top: 20px;
+  }
+  
+  .ReactModal__Content button:hover {
+    background-color: #f4f4f4;
+    color: #121212;
+    box-shadow: 0px 0px 12px 0px rgba(255, 255, 255, 0.8), 0px 0px 15px 0px rgba(255, 255, 255, 0.5);
+  }
+
+  .modal-content {
+    position: absolute; /* Ensure it's positioned absolutely */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for exact center */
+    background-color: #fff; /* White background for modal content */
+    color: #000; /* Black text color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside modal */
+    max-width: 600px; /* Max width for the modal */
+    width: 90%; /* Responsive width */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); /* Shadow for visibility */
+    outline: none; /* Remove default outline */
+    z-index: 1000; /* Ensure it's on top */
+    text-align: center; /* Ensure text is aligned to the left */
+    font-family: "Jaro", sans-serif; /* Example fallback font */
+  }
