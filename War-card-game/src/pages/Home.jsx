@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import GameContext from '../components/GameContext';
+import Spline from '@splinetool/react-spline';
 import './Home.css'; // Import the CSS file
 
 Modal.setAppElement('#root');
@@ -33,6 +34,9 @@ function Home() {
 
   return (
     <div className="home-container">
+      <div className="spline-container">
+      <Spline scene="https://prod.spline.design/BmTlrRV4ecdAa8Aw/scene.splinecode" />
+      </div>
       <h1>Welcome to the War Card Game</h1>
       <h2>Wanna try your luck?</h2>
       <h3>Or would you like to test your memory?</h3>
