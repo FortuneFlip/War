@@ -1,6 +1,11 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GameContext from '../components/GameContext';
+// import Spline from '@splinetool/react-spline';
+import './Result.css'; // Import the CSS file
+
+// Lazy load Spline component
+const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
 function Result() {
   const { playerWins, computerWins, difficulty, finalRes, decision } = useContext(GameContext);
@@ -60,18 +65,54 @@ function Result() {
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>{headingMessage}</h1>
-      <h2>Final Scores</h2>
-      <p>Player Wins: {playerWins}</p>
-      <p>Computer Wins: {computerWins}</p>
-      <button onClick={handleLike}>Like</button>
-      <h3>Likes: {likes}</h3>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <button onClick={restartGame}>Try Again</button>
+    <div className="result-container">
+      <div className="spline-container">
+        <Suspense fallback={<div>Loading...</div>}>
+          <Spline scene="https://prod.spline.design/eKJR5rYNhgNkNalC/scene.splinecode" />
+        </Suspense>
+      </div>
+      <div className="content">
+        <div className="small-star-container">
+          <button onClick={restartGame} className="try-again-button">Try Again</button>
+        </div>
+        <div className="animated-container">
+          <div className="scroll-content">
+            <div className="scroll-item">
+              <div className="stats-container">
+                <h2>Final Scores</h2>
+                <p>Player Wins: {playerWins}</p>
+                <p>Computer Wins: {computerWins}</p>
+              </div>
+              <div className="star-container">
+                <h1>{headingMessage}</h1>
+              </div>
+            </div>
+            <div className="scroll-item">
+              <div className="stats-container">
+                <h2>Final Scores</h2>
+                <p>Player Wins: {playerWins}</p>
+                <p>Computer Wins: {computerWins}</p>
+              </div>
+              <div className="star-container">
+                <h1>{headingMessage}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button onClick={handleLike} className="like-button">Like</button>
+        <h3>Leave a Like: {likes}</h3>
+        {error && <p className="error">{error}</p>}
+      </div>
     </div>
   );
 }
 
 export default Result;
+
+
+
+
+
+
+
 

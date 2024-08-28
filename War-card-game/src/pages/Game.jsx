@@ -54,14 +54,16 @@ function Game() {
 
   useEffect(() => {
     // Determine the final result based on player and computer wins
-    if (playerWins > computerWins) {
-      setFinalRes("Player Wins!");
-    } else if (computerWins > playerWins) {
-      setFinalRes("Computer Wins!");
-    } else {
-      setFinalRes("It's a Tie!");
+    if (remaining === 0) { // Check if the game has ended
+      if (playerWins > computerWins) {
+        setFinalRes("Player Won!");
+      } else if (computerWins > playerWins) {
+        setFinalRes("Computer Won!");
+      } else {
+        setFinalRes("It's a Tie!");
+      }
     }
-  }, [playerWins, computerWins]);
+  }, [remaining, playerWins, computerWins]);
 
   const drawCards = async () => {
     if (!deckId) return;
@@ -97,13 +99,13 @@ function Game() {
     const computerValue = values[computerCard.value];
 
     if (playerValue > computerValue) {
-      setResult("Player Wins!");
+      setResult("Player wins this round!");
       setPlayerWins(prevWins => prevWins + 1);
     } else if (computerValue > playerValue) {
-      setResult("Computer Wins!");
+      setResult("Computer wins this round!");
       setComputerWins(prevWins => prevWins + 1);
     } else {
-      setResult("It's a Tie!");
+      setResult("It was tie this round!");
     }
 
     setRound(prevRound => prevRound + 1);
@@ -132,9 +134,9 @@ function Game() {
 
   const handlePlayerChoice = (choice) => {
     // Compare the player's choice with the actual result
-    if (choice === 'player' && finalRes === 'Player Wins!') {
+    if (choice === 'player' && finalRes === 'Player Won!') {
       setDecision("right, player won!");
-    } else if (choice === 'computer' && finalRes === 'Computer Wins!') {
+    } else if (choice === 'computer' && finalRes === 'Computer Won!') {
       setDecision("right, computer won!");
     } else if (choice === 'tie' && finalRes === "It's a Tie!") {
       setDecision("right, both player and computer tied!");
@@ -192,6 +194,7 @@ function Game() {
 }
 
 export default Game;
+
 
 
 
