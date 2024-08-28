@@ -1,4 +1,8 @@
 body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
   font-family: 'Press Start 2P', cursive; /* Apply to all text except specified */
 }
 

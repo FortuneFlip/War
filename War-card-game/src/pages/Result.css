@@ -1,0 +1,142 @@
+/* Overall container styling */
+.result-container {
+  text-align: center;
+  color: #fff; /* White text */
+  min-height: 100vh; /* Ensure it covers the full viewport height */
+  position: relative; /* Positioning context for absolute positioning */
+  overflow: hidden; /* Prevent scrollbars */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+}
+
+/* Spline container styling */
+.spline-container {
+  position: absolute; /* Cover the entire container */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place it behind content */
+  overflow: hidden; /* Prevent overflow issues */
+}
+
+/* Content styling */
+.content {
+  position: relative; /* Ensure it's above the Spline background */
+  z-index: 1;
+  padding: 20px; /* Add some padding */
+  max-width: 1200px; /* Optional: limit the width for readability */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  color: #fff; /* Make sure text is readable */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  min-height: 100vh; /* Ensure it covers the full viewport height */
+}
+
+/* Horizontal scroll setup for animated containers */
+.animated-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: auto; /* Adjust height as needed */
+}
+
+.scroll-content {
+  display: flex;
+  flex-direction: row;
+  width: 200%; /* Width is twice the container's width to accommodate two items */
+  animation: slideHorizontally 20s linear infinite; /* Apply horizontal sliding animation */
+}
+
+.scroll-item {
+  flex: 1 0 50%; /* Each item takes half the width of its parent */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  padding: 0 20px; /* Add some padding to the sides */
+}
+
+/* Animation setup */
+@keyframes slideHorizontally {
+  0% {
+    transform: translateX(0); /* Start at the initial position */
+  }
+  100% {
+    transform: translateX(-50%); /* Slide to the left by the width of one container */
+  }
+}
+
+/* Adjusted star styling */
+.star-container h1 {
+  font-size: 1.5em;
+  padding: 20px;
+}
+
+/* Adjusted stats styling */
+.stats-container h2 {
+  font-size: 1.2em;
+  padding: 20px;
+}
+
+/* Small star and button positioning */
+.small-star-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.small-star {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+/* Button styling */
+.try-again-button,
+.like-button {
+  background-color: #fff; /* White background for button */
+  color: #000; /* Black text for button */
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 1em; /* Adjust font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.5), 0px 0px 15px 0px rgba(255, 255, 255, 0.3); /* Initial glowing effect */
+  font-family: "Bungee Shade", sans-serif; /* Example fallback font */
+}
+
+/* Button hover effect */
+.try-again-button:hover,
+.like-button:hover {
+  background-color: #f0f0f0; /* Slightly darker white for hover effect */
+  box-shadow: 0px 0px 20px 0px rgba(255, 255, 100, 0.8), 0px 0px 25px 0px rgba(255, 255, 150, 0.5); /* Yellowish glowing effect on hover */
+}
+
+/* Add active state for click effect */
+.try-again-button:active,
+.like-button:active {
+  background-color: #e0e0e0; /* Darker background on click */
+  box-shadow: 0px 0px 8px 0px rgba(255, 255, 100, 0.4), 0px 0px 10px 0px rgba(255, 255, 150, 0.2); /* Reduced yellowish glowing effect on click */
+}
+
+h3 {
+  font-family: "Jaro", sans-serif; /* Example fallback font */
+}
+
+/* Error message styling */
+.error {
+  color: red;
+}
+
+
+
+
+
+
