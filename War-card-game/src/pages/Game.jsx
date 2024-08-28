@@ -23,6 +23,7 @@ function Game() {
   const [round, setRound] = useState(1);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [hideStats, setHideStats] = useState(false); // State to manage hiding stats in "Memory" mode
+  const [reshuffleClicked, setReshuffleClicked] = useState(false); // State to track reshuffle button click
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -108,6 +109,22 @@ function Game() {
     setRound(prevRound => prevRound + 1);
   };
 
+  const reshuffleDeck = async () => {
+    if (!deckId) return;
+
+    try {
+      const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/?remaining=true`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      setRemaining(data.remaining); // Update the remaining cards if needed
+      setReshuffleClicked(true); // Mark the reshuffle button as clicked
+    } catch (error) {
+      console.error('Error reshuffling deck:', error);
+    }
+  };
+
   const closeModal = () => {
     setModalIsOpen(false);
     navigate('/result');
@@ -139,6 +156,9 @@ function Game() {
       {remaining > 0 ? (
         <>
           <button onClick={drawCards} disabled={!deckId}>Draw Cards</button>
+          {!reshuffleClicked && ( // Render button only if it hasn't been clicked
+            <button onClick={reshuffleDeck} disabled={!deckId}>Reshuffle Deck</button>
+          )}
           <div style={{ marginTop: "20px" }}>
             {playerCard && (
               <img src={playerCard.image} alt={playerCard.value} />
@@ -172,6 +192,7 @@ function Game() {
 }
 
 export default Game;
+
 
 
 
